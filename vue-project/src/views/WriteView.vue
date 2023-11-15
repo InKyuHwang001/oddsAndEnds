@@ -1,7 +1,12 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-  <main>
-  </main>
+  <p>
+    
+  </p>
 </template>
+<style>
+
+</style>
