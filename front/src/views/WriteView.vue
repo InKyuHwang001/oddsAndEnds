@@ -8,7 +8,7 @@ const content = ref("");
 
 
 const wirte = function (){
-  axios.post("http://localhost:8080/posts", {
+  axios.post("/my-backend-api/posts", {
     title:title.value,
     content: content.value
   })
