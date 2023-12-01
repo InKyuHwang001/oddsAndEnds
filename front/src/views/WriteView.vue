@@ -15,8 +15,8 @@ const wirte = function () {
     title: title.value,
     content: content.value
   })
-      .then(()=>{
-        router.replace({name:"home"})
+      .then(() => {
+        router.replace({name: "home"})
       })
 }
 </script>

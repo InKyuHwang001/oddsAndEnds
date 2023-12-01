@@ -2,14 +2,18 @@
 
 import axios from "axios";
 import {ref} from "vue";
+import {useRouter} from "vue-router";
+
+const router = useRouter();
 
 const posts = ref([])
 
-axios.get("/my-backend-api/posts?page=1&size=5").then((response) =>{
-      response.data.forEach((r: any) => {
-        posts.value.push(r)
-      })
-    })
+axios.get("/my-backend-api/posts?page=1&size=5").then((response) => {
+  response.data.forEach((r: any) => {
+    posts.value.push(r)
+  })
+})
+
 
 </script>
 
@@ -17,8 +21,11 @@ axios.get("/my-backend-api/posts?page=1&size=5").then((response) =>{
   <ul>
     <li v-for="post in posts" :key="post.id">
       <div>
-        {{ post.title }}
+        <router-link :to="{name: 'read',params: {postId: post.id}}">
+          {{ post.title }}
+        </router-link>
       </div>
+
       <div>
         {{ post.content }}
       </div>
