@@ -2,16 +2,22 @@
 
 import {ref} from "vue";
 import axios from "axios";
+import {useRouter} from "vue-router";
+
+const router = useRouter();
 
 const title = ref("");
 const content = ref("");
 
 
-const wirte = function (){
+const wirte = function () {
   axios.post("/my-backend-api/posts", {
-    title:title.value,
+    title: title.value,
     content: content.value
   })
+      .then(()=>{
+        router.replace({name:"home"})
+      })
 }
 </script>
 
@@ -22,11 +28,11 @@ const wirte = function (){
     </div>
 
     <div class="mt-2">
-      <el-input v-model="content" type="textarea"  rows="15"/>
+      <el-input v-model="content" type="textarea" rows="15"/>
     </div>
 
     <div class="mt-2">
-      <el-button type="primary" @click ="wirte"> 글 작성완료</el-button>
+      <el-button type="primary" @click="wirte"> 글 작성완료</el-button>
     </div>
 
   </main>
