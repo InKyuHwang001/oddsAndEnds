@@ -39,18 +39,17 @@ class PostControllerTest {
 
 
     @BeforeEach
-    void cleanDBS() {
+    void cleanDBs() {
         postRepository.deleteAll();
-
     }
 
     @AfterEach
-    void cleanDBE(){
+    void cleanDBE() {
         postRepository.deleteAll();
     }
 
     @Test
-    @DisplayName("posts 요청시 제목과 내용이 필수")
+    @DisplayName("posts 요청시 정상작동")
     void post1() throws Exception {
         //given
         PostCreate request = PostCreate
