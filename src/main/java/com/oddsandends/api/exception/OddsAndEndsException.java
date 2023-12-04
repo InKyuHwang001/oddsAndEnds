@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-public abstract class OddsAndEndsException extends RuntimeException{
+public abstract class OddsAndEndsException extends RuntimeException {
 
     public final Map<String, String> validation = new HashMap<>();
 
@@ -20,7 +20,7 @@ public abstract class OddsAndEndsException extends RuntimeException{
 
     public abstract int getStatusCode();
 
-    public void addValidation(String feildName, String message){
+    public void addValidation(String feildName, String message) {
         validation.put(feildName, message);
     }
 }

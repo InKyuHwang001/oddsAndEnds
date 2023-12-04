@@ -17,7 +17,7 @@ public class InvalidRequest extends OddsAndEndsException {
     }
 
     @Override
-    public int getStatusCode(){
+    public int getStatusCode() {
         return 400;
     }
 }

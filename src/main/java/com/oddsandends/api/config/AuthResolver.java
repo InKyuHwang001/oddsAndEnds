@@ -21,11 +21,9 @@ public class AuthResolver implements HandlerMethodArgumentResolver {
             throw new Unauthorized();
         }
 
-        // DB 사용자 확인 작업
-        
+        //TODO: DB 사용자 확인 작업
 
-        UserSession userSession = new UserSession();
-        userSession.name = "hwang";
-        return userSession;
+
+        return new UserSession(1L);
     }
 }
