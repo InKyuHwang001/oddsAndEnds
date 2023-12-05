@@ -117,4 +117,10 @@ class AuthControllerTest {
                 .andExpect(jsonPath("$.accessToken", notNullValue()))
                 .andDo(print());
     }
+
+   @Test
+   @DisplayName("로그인 후 권한이 필요한 페이접속")
+   void login4() throws Exception{
+
+   }
 }
