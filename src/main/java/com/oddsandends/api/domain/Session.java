@@ -1,18 +1,19 @@
 package com.oddsandends.api.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 
-import static jakarta.persistence.GenerationType.IDENTITY;
-import static java.util.UUID.randomUUID;
-import static lombok.AccessLevel.PROTECTED;
+import java.util.UUID;
 
-@Entity
+import static jakarta.persistence.GenerationType.IDENTITY;
+
 @Getter
-@NoArgsConstructor(access = PROTECTED)
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Session {
 
     @Id
@@ -22,11 +23,11 @@ public class Session {
     private String accessToken;
 
     @ManyToOne
-    private User user;
+    private Member member;
 
     @Builder
-    public Session(User user) {
-        this.accessToken = randomUUID().toString();
-        this.user = user;
+    public Session(Member member) {
+        this.accessToken = UUID.randomUUID().toString();
+        this.member = member;
     }
 }

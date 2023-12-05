@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @Slf4j
@@ -20,11 +21,9 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/posts")
-    public void post(@RequestBody @Valid PostCreate request, @RequestHeader String authorization) {
-        if (authorization.equals("hwang")) {
-            request.validate();
-            postService.write(request);
-        }
+    public void post(@RequestBody @Valid PostCreate request) {
+        request.validate();
+        postService.write(request);
     }
 
     @GetMapping("/posts")
@@ -38,17 +37,12 @@ public class PostController {
     }
 
     @PatchMapping("/posts/{postId}")
-    public void edit(@PathVariable Long postId, @RequestBody @Valid PostEdit request, @RequestHeader String authorization) {
-
-        if (authorization.equals("hwang")) {
-            postService.edit(postId, request);
-        }
+    public void edit(@PathVariable Long postId, @RequestBody @Valid PostEdit request) {
+        postService.edit(postId, request);
     }
 
     @DeleteMapping("/posts/{postId}")
-    public void delete(@PathVariable Long postId, @RequestHeader String authorization) {
-        if (authorization.equals("hwang")) {
-            postService.delete(postId);
-        }
+    public void delete(@PathVariable Long postId) {
+        postService.delete(postId);
     }
 }

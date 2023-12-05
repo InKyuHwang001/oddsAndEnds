@@ -1,20 +1,25 @@
 package com.oddsandends.api.service;
 
-import com.oddsandends.api.domain.User;
+import com.oddsandends.api.domain.Session;
+import com.oddsandends.api.domain.Member;
 import com.oddsandends.api.exception.InvalidSignInInformation;
-import com.oddsandends.api.repository.UserRepository;
+import com.oddsandends.api.repository.MemberRepository;
 import com.oddsandends.api.request.Login;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class AuthService {
-    private final UserRepository userRepository;
+    private final MemberRepository userRepository;
 
-    public void signin(Login login){
-        User user = userRepository.findByEmailAndPassword(login.getEmail(), login.getPassword())
+    @Transactional
+    public String signIn(Login login){
+        Member user = userRepository.findByEmailAndPassword(login.getEmail(), login.getPassword())
                 .orElseThrow(InvalidSignInInformation::new);
-        user.addSession();
+        Session session = user.addSession();
+
+        return session.getAccessToken();
     }
 }

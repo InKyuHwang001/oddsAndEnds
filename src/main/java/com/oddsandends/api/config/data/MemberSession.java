@@ -1,11 +1,11 @@
 package com.oddsandends.api.config.data;
 
 
-public class UserSession {
+public class MemberSession {
 
     private Long id;
 
-    public UserSession(Long id) {
+    public MemberSession(Long id) {
         this.id = id;
     }
 }

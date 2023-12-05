@@ -1,6 +1,6 @@
 package com.oddsandends.api.config;
 
-import com.oddsandends.api.config.data.UserSession;
+import com.oddsandends.api.config.data.MemberSession;
 import com.oddsandends.api.exception.Unauthorized;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -11,7 +11,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 public class AuthResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType().equals(UserSession.class);
+        return parameter.getParameterType().equals(MemberSession.class);
     }
 
     @Override
@@ -24,6 +24,6 @@ public class AuthResolver implements HandlerMethodArgumentResolver {
         //TODO: DB 사용자 확인 작업
 
 
-        return new UserSession(1L);
+        return new MemberSession(1L);
     }
 }
