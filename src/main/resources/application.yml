@@ -13,3 +13,6 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+
+oddsandends:
+  jwt-key: "rTPmA9Sgk+Q1XwuJbG7E6xFFUhQpdi+al5iyPnRTK/Q="
